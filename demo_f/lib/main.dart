@@ -16,6 +16,7 @@ void main() {
             fontWeight: FontWeight.bold,
             letterSpacing: 2.0,
             color: Colors.greenAccent[700],
+            fontFamily: 'Baloo',
           ),
 
         ),
