@@ -21,8 +21,7 @@ void main() {
               children: <Widget>[
                 Image(
                     width: 100.00,
-                    image: NetworkImage(
-                        'https://425a4737ivmv4froj2qpw6u1-wpengine.netdna-ssl.com/wp-content/uploads/2018/07/main-aviary-great-indian-hornbill-2012.jpg')),
+                    image: AssetImage('images/hornbill.jpg')),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
