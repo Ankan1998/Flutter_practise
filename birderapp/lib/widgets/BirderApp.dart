@@ -1,4 +1,4 @@
-import 'package:birderapp/widgets/bird_list_with_rows_cols.dart';
+import 'package:birderapp/widgets/BirdListWithListView.dart';
 import 'package:flutter/material.dart';
 
 class BirderApp extends StatelessWidget {
@@ -13,12 +13,8 @@ class BirderApp extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.teal[700],
           ),
-          body: Column(
-              // margin: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-              children: <Widget>[
-                BirdListWithRowsCols(),
-                BirdListWithRowsCols()
-              ])),
+          body: BirdListWithListView(),
+        ),
     );
   }
 }
