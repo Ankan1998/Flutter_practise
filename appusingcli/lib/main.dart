@@ -8,8 +8,9 @@ void main() => runApp(
         title: Text('Hello Flutter'),
         backgroundColor: Colors.teal.shade300,
       ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center, //Align all other container according to size 
+        //stretch stretch all container to its max width
         children: <Widget>
         [
           Container(
@@ -21,7 +22,7 @@ void main() => runApp(
           ),
           Container(
             height: 100.0,
-            width: 100.0,
+            width: 300.0,
             color: Colors.blue,
             child: Text('Container2'),
 
@@ -38,3 +39,6 @@ void main() => runApp(
     ),
   ),
 );
+
+
+// Use widget inspector to inspect size
