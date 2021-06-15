@@ -23,7 +23,9 @@ void main() {
                     width: 100.00,
                     image: AssetImage('images/hornbill.jpg')),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(
+                    left: 10.0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
