@@ -9,6 +9,7 @@ void main() => runApp(
         backgroundColor: Colors.teal.shade300,
       ),
       body: Column(
+        mainAxisSize: MainAxisSize.max,
         children: <Widget>
         [
           Container(
