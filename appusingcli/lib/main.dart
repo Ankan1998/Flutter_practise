@@ -8,7 +8,7 @@ void main() => runApp(
         title: Text('Hello Flutter'),
         backgroundColor: Colors.teal.shade300,
       ),
-      body: Column(
+      body: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>
         [
