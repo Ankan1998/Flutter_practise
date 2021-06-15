@@ -37,6 +37,7 @@ void main() {
                       Text(
                         'Bucerotidae',
                         style: TextStyle(
+                          color:Colors.purpleAccent,
                           fontSize: 20.0,
                           fontStyle: FontStyle.italic,
                         )
