@@ -29,9 +29,17 @@ void main() {
                     children: <Widget>[
                       Text(
                         'Hornbill',
+                        style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                        )
                       ),
                       Text(
                         'Bucerotidae',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontStyle: FontStyle.italic,
+                        )
                       )
                     ],
                   ),
