@@ -18,6 +18,20 @@ void main() => runApp(
             child: Text('Container1'),
 
           ),
+          Container(
+            height: 100.0,
+            width: 100.0,
+            color: Colors.blue,
+            child: Text('Container2'),
+
+          ),
+          Container(
+            height: 100.0,
+            width: 100.0,
+            color: Colors.green,
+            child: Text('Container3'),
+
+          ),
         ],
       ),
     ),
