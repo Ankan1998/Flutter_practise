@@ -31,13 +31,14 @@ void main() {
                         'Hornbill',
                         style: TextStyle(
                           fontSize: 30.0,
+                          fontFamily: 'Raleway',
                           fontWeight: FontWeight.bold,
                         )
                       ),
                       Text(
                         'Bucerotidae',
                         style: TextStyle(
-                          color:Colors.purpleAccent,
+                          color:Colors.grey[700],
                           fontSize: 20.0,
                           fontStyle: FontStyle.italic,
                         )
