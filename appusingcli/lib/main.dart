@@ -4,38 +4,49 @@ import 'package:flutter/material.dart';
 void main() => runApp(
   MaterialApp(
     home: Scaffold(
-      appBar: AppBar(
-        title: Text('Hello Flutter'),
-        backgroundColor: Colors.teal.shade300,
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center, //Align all other container according to size 
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround, //Align all other container according to size 
         //stretch stretch all container to its max width
         children: <Widget>
         [
+          
           Container(
+            height: 1000.0,
+            width: 100.0,
+            color: Colors.green,
+            
+
+          ),
+          Center(
+          child: Container(
             height: 100.0,
             width: 100.0,
             color: Colors.red,
-            child: Text('Container1'),
+            
 
           ),
-          Container(
-            height: 100.0,
-            width: 300.0,
-            color: Colors.blue,
-            child: Text('Container2'),
-
           ),
-          Container(
+          Center(
+          child: Container(
             height: 100.0,
             width: 100.0,
-            color: Colors.green,
-            child: Text('Container3'),
+            color: Colors.red,
+            
 
           ),
+          ),
+          Container(
+            height: 1000.0,
+            width: 100.0,
+            color: Colors.blue,
+            
+
+          ),
+
         ],
+        
       ),
+      
     ),
   ),
 );
