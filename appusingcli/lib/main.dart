@@ -9,7 +9,7 @@ void main() => runApp(
         backgroundColor: Colors.teal.shade300,
       ),
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>
         [
           Container(
