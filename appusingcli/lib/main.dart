@@ -11,12 +11,13 @@ void main() => runApp(
       body: Column(
         children: <Widget>
         [
-          Image(
-            image: NetworkImage(
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVAutAWUHAE6LYPkEJcFBqb6U8FTTDdGG4KnooNepcmDNRyFl6-LLTbJWu-n2TwyDOjqo&usqp=CAU'
-            ),
-          ),
+          Container(
+            height: 100.0,
+            width: 100.0,
+            color: Colors.red,
+            child: Text('Container1'),
 
+          ),
         ],
       ),
     ),
