@@ -55,7 +55,8 @@ class BirdListWithListView extends StatelessWidget {
                   color: Colors.red[500],
                 ),
                 onTap: () {
-                  print('U tapped so wassup');
+                  print("delete id: ${bird.id}");
+                  listofbirds.removeWhere((theBird) => bird.id == theBird.id);
                 },
               ),
             ),
