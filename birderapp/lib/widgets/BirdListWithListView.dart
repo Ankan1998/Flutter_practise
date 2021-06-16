@@ -10,7 +10,7 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
   final List<BirdModel> listofbirds = [
     BirdModel(
       id: 1,
-      like: 100,
+      //like: 100,
       name: 'Hornbill',
       scientificName: 'Bucerotidae',
       imageUrl:
@@ -18,7 +18,7 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
     ),
     BirdModel(
       id: 2,
-      like: 298,
+      //like: 298,
       name: 'Humming Bird',
       scientificName: 'Trochilidae',
       imageUrl:
@@ -26,7 +26,7 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
     ),
     BirdModel(
       id: 3,
-      like: 217,
+      //like: 217,
       name: 'Kingfisher',
       scientificName: 'Alcedinidae',
       imageUrl:
@@ -34,54 +34,51 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
     ),
   ];
 
+  void deleteABird(BirdModel bird) {
+    setState(() {
+      // Any changes should be done should be inside setState
+      print("delete id: ${bird.id}");
+      listofbirds.removeWhere((theBird) => bird.id == theBird.id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
         ...listofbirds.map(
-          (bird) => Card(
-            elevation: 10,
-            child: ListTile(
-              leading: Image(
-                width: 100.0,
-                fit: BoxFit.fitWidth,
-                image: NetworkImage(bird.imageUrl),
-              ),
-              title: Text(
-                bird.name,
-                style: TextStyle(
-                  fontSize: 25.0,
+          (bird) => GestureDetector(
+            onHorizontalDragEnd: (_) {
+              //print('U dragged');
+              deleteABird(bird);
+            },
+            child: Card(
+              elevation: 10,
+              child: ListTile(
+                leading: Image(
+                  width: 100.0,
+                  fit: BoxFit.fitWidth,
+                  image: NetworkImage(bird.imageUrl),
                 ),
-              ),
-              subtitle: Text(
-                bird.scientificName,
-                style: TextStyle(fontSize: 18.0),
-              ),
-              trailing: Column(
-                children: <Widget>[
-                  InkWell(
-                    child: Icon(
-                      Icons.thumb_up_outlined,
-                      color: Colors.red[500],
-                    ),
-                    onTap: () {
-                      setState(() {
-                        // Any changes should be done should be inside setState
-                        //print("delete id: ${bird.id}");
-                        //listofbirds.removeWhere((theBird) => bird.id == theBird.id);
-                        for (var i in listofbirds) {
-                          if (i.id == bird.id) {
-                            i.like = bird.like + 1;
-                          }
-                        }
-                      });
-                    },
+                title: Text(
+                  bird.name,
+                  style: TextStyle(
+                    fontSize: 25.0,
                   ),
-                  Text(
-                    '${bird.like}',
-                    style: TextStyle(fontSize: 18.0),
+                ),
+                subtitle: Text(
+                  bird.scientificName,
+                  style: TextStyle(fontSize: 18.0),
+                ),
+                trailing: InkWell(
+                  child: Icon(
+                    Icons.delete,
+                    color: Colors.red[500],
                   ),
-                ],
+                  onTap: () {
+                    deleteABird(bird);
+                  },
+                ),
               ),
             ),
           ),
@@ -160,15 +157,29 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
 //List view make page scrollable
 //Stateless widget doesnot update UI (Static)
 
-// trailing: InkWell(
-//                 child: Icon(
-//                   Icons.delete,
-//                   color: Colors.red[500],
-//                 ),
-//                 onTap: () {
-//                   setState(() { // Any changes should be done should be inside setState
-//                     print("delete id: ${bird.id}");
-//                     listofbirds.removeWhere((theBird) => bird.id == theBird.id);
-//                   });
-//                 },
+// trailing: Column(
+//                 children: <Widget>[
+//                   InkWell(
+//                     child: Icon(
+//                       Icons.thumb_up_outlined,
+//                       color: Colors.red[500],
+//                     ),
+//                     onTap: () {
+//                       setState(() {
+//                         // Any changes should be done should be inside setState
+//                         //print("delete id: ${bird.id}");
+//                         //listofbirds.removeWhere((theBird) => bird.id == theBird.id);
+//                         for (var i in listofbirds) {
+//                           if (i.id == bird.id) {
+//                             i.like = bird.like + 1;
+//                           }
+//                         }
+//                       });
+//                     },
+//                   ),
+//                   Text(
+//                     '${bird.like}',
+//                     style: TextStyle(fontSize: 18.0),
+//                   ),
+//                 ],
 //               ),
