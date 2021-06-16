@@ -1,7 +1,6 @@
 import 'package:birderapp/models/birdmodel.dart';
 import 'package:flutter/material.dart';
-//
-// ignore: must_be_immutable
+
 class BirdListWithListView extends StatelessWidget {
   final List<BirdModel> listofbirds = [
     BirdModel(
@@ -23,7 +22,7 @@ class BirdListWithListView extends StatelessWidget {
       name: 'Kingfisher',
       scientificName: 'Alcedinidae',
       imageUrl:
-          'https://www.thespruce.com/thmb/XonXjEwO495Rxk1BwX4lrelXbuQ=/1333x1000/smart/filters:no_upscale()/oriental-dwarf-kingfisher-58518cef3df78c491e5694ce.jpg',
+          'https://upload.wikimedia.org/wikipedia/commons/7/72/Alcedo_azurea_-_Julatten.jpg',
     ),
   ];
 
@@ -31,14 +30,16 @@ class BirdListWithListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: <Widget>[
-        ...listofbirds.map( //... is a spread operator, creates temporary list and fetches elemeent one by one
-          (bird) => ListTile(
-            leading: Image(
-              width: 100.0,
-              fit: BoxFit.fitWidth,
-              image: NetworkImage(bird.imageUrl),
-            ),
-            title: Text(
+        ...listofbirds.map(
+          (bird) => Card(
+            elevation: 10,
+            child: ListTile(
+              leading: Image(
+                width: 100.0,
+                fit: BoxFit.fitWidth,
+                image: NetworkImage(bird.imageUrl),
+              ),
+              title: Text(
                 bird.name,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -52,11 +53,10 @@ class BirdListWithListView extends StatelessWidget {
                 Icons.delete,
                 color: Colors.red[500],
               ),
+            ),
           ),
-        )
+        ),
       ],
     );
   }
 }
-//ListTile -> leading, title, subtitle, trailing
-// Image, name delete
