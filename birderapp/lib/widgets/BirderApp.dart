@@ -1,13 +1,18 @@
+import 'package:birderapp/models/birdlist_changenotifier.dart';
 import 'package:birderapp/widgets/BirdListWithListView.dart';
+// import 'package:birderapp/widgets/birdcount.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'BirdListWithListView.dart';
 
 class BirderApp extends StatelessWidget {
-  const BirderApp({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return ChangeNotifierProvider(
+      create: (_) => BirdListChangeNotifier(),
+      child: MaterialApp(
+        home: Scaffold(
           appBar: AppBar(
             title: Text('Birder App'),
             centerTitle: true,
@@ -15,6 +20,7 @@ class BirderApp extends StatelessWidget {
           ),
           body: BirdListWithListView(),
         ),
+      ),
     );
   }
 }

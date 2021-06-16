@@ -1,5 +1,7 @@
-import 'package:birderapp/models/birdmodel.dart';
+import 'package:birderapp/models/birdlist_changenotifier.dart';
+import 'package:birderapp/widgets/birdcount.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BirdListWithListView extends StatefulWidget {
   @override
@@ -7,83 +9,71 @@ class BirdListWithListView extends StatefulWidget {
 }
 
 class _BirdListWithListViewState extends State<BirdListWithListView> {
-  final List<BirdModel> listofbirds = [
-    BirdModel(
-      id: 1,
-      //like: 100,
-      name: 'Hornbill',
-      scientificName: 'Bucerotidae',
-      imageUrl:
-          'https://425a4737ivmv4froj2qpw6u1-wpengine.netdna-ssl.com/wp-content/uploads/2018/07/main-aviary-great-indian-hornbill-2012.jpg',
-    ),
-    BirdModel(
-      id: 2,
-      //like: 298,
-      name: 'Humming Bird',
-      scientificName: 'Trochilidae',
-      imageUrl:
-          'https://www.thespruce.com/thmb/6oqkvxm2kUj6Krf05h7X4qy47fU=/1500x844/smart/filters:no_upscale()/annas-d97a9a5f0321476098e7917726d2366d.jpg',
-    ),
-    BirdModel(
-      id: 3,
-      //like: 217,
-      name: 'Kingfisher',
-      scientificName: 'Alcedinidae',
-      imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/7/72/Alcedo_azurea_-_Julatten.jpg',
-    ),
-  ];
-
-  void deleteABird(BirdModel bird) {
-    setState(() {
-      // Any changes should be done should be inside setState
-      print("delete id: ${bird.id}");
-      listofbirds.removeWhere((theBird) => bird.id == theBird.id);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        ...listofbirds.map(
-          (bird) => GestureDetector(
-            onHorizontalDragEnd: (_) {
-              //print('U dragged');
-              deleteABird(bird);
-            },
-            child: Card(
-              elevation: 10,
-              child: ListTile(
-                leading: Image(
-                  width: 100.0,
-                  fit: BoxFit.fitWidth,
-                  image: NetworkImage(bird.imageUrl),
-                ),
-                title: Text(
-                  bird.name,
-                  style: TextStyle(
-                    fontSize: 25.0,
+    return Consumer<BirdListChangeNotifier>(
+      builder: (_, birdlistCNInstance, __) => ListView(
+        children: <Widget>[
+          ...birdlistCNInstance.listofbirds.map(
+            // will change (comes from ChangeNotifier)
+            (bird) => GestureDetector(
+              onHorizontalDragEnd: (_) {
+                // print('U dragged !');
+                birdlistCNInstance.deleteABird(
+                    bird); // will change (comes from ChangeNotifier)
+              },
+              child: Card(
+                elevation: 10,
+                child: ListTile(
+                  leading: Image(
+                    width: 100.0,
+                    fit: BoxFit.fitWidth,
+                    image: NetworkImage(bird.imageUrl),
                   ),
-                ),
-                subtitle: Text(
-                  bird.scientificName,
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                trailing: InkWell(
-                  child: Icon(
-                    Icons.delete,
-                    color: Colors.red[500],
+                  title: Text(
+                    bird.name,
+                    style: TextStyle(
+                      fontSize: 25.0,
+                    ),
                   ),
-                  onTap: () {
-                    deleteABird(bird);
-                  },
+                  subtitle: Text(
+                    bird.scientificName,
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  trailing: InkWell(
+                    child: Icon(
+                      Icons.delete,
+                      color: Colors.red[500],
+                    ),
+                    onTap: () {
+                      // print('U tapped ! But have u tapped ur potential ?');
+                      birdlistCNInstance.deleteABird(bird);
+                    },
+                  ),
+                  // trailing: Column(
+                  //   children: <Widget>[
+                  //     Text(bird.likes.toString()),
+                  //     InkWell(
+                  //       child: Icon(
+                  //         Icons.thumb_up_outlined,
+                  //         color: Colors.blue,
+                  //       ),
+                  //       onTap: () {
+                  //         setState(() {
+                  //           bird.likes += 1;
+                  //           print(bird.likes);
+                  //         });
+                  //       },
+                  //     )
+                  //   ],
+                  // ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+          BirdCount()
+        ],
+      ),
     );
   }
 }
