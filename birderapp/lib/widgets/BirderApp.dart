@@ -1,5 +1,5 @@
 import 'package:birderapp/models/birdlist_changenotifier.dart';
-import 'package:birderapp/widgets/BirdListWithListView.dart';
+import 'package:birderapp/screens/add_new_bird_screen.dart';
 // import 'package:birderapp/widgets/birdcount.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +18,7 @@ class BirderApp extends StatelessWidget {
             centerTitle: true,
             backgroundColor: Colors.teal[700],
           ),
-          body: BirdListWithListView(),
+          body: AddNewBird(),
         ),
       ),
     );
