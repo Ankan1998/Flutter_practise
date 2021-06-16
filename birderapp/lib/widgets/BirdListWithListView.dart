@@ -49,9 +49,14 @@ class BirdListWithListView extends StatelessWidget {
                 bird.scientificName,
                 style: TextStyle(fontSize: 18.0),
               ),
-              trailing: Icon(
-                Icons.delete,
-                color: Colors.red[500],
+              trailing: InkWell(
+                child: Icon(
+                  Icons.delete,
+                  color: Colors.red[500],
+                ),
+                onTap: () {
+                  print('U tapped so wassup');
+                },
               ),
             ),
           ),
@@ -60,3 +65,5 @@ class BirdListWithListView extends StatelessWidget {
     );
   }
 }
+
+//List view make page scrollable
