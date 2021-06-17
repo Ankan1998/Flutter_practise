@@ -1,15 +1,18 @@
-
 class BirdModel {
   final int id;
-  //int like;
+  int likes;
   final String name;
   final String scientificName;
+  final String info;
   final String imageUrl;
+  bool isFavorite = false;
 
   BirdModel(
       {required this.id,
-      //required this.like,
+      required this.likes,
+      required this.info,
       required this.name,
+      required this.isFavorite,
       required this.scientificName,
       required this.imageUrl});
 }

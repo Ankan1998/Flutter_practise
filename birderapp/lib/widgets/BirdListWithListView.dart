@@ -28,17 +28,24 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
                 child: ListTile(
                   leading: GestureDetector(
                     onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BirdDetails(theBird: bird,),
-                          )
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BirdDetails(theBird: bird,
+                          ),
+                        )
                       );
                     },
-                    child: Image(
-                      width: 100.0,
-                      fit: BoxFit.fitWidth,
-                      image: NetworkImage(bird.imageUrl),
+                    child: Hero(
+                      tag: 'birdHeroFly-${bird.id}',
+                      child: ClipOval(
+                        child: Image(
+                        width: 80.0,
+                        height: 80.0,
+                        fit: BoxFit.cover,
+                        image: NetworkImage(bird.imageUrl),
+                        ),
+                     ),
                     ),
                   ),
                   title: Text(
