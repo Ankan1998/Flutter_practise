@@ -11,14 +11,25 @@ class BirderApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => BirdListChangeNotifier(),
-      child: MaterialApp(
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text('Birder App'),
-            centerTitle: true,
-            backgroundColor: Colors.teal[700],
-          ),
-          body: AddNewBird(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Birder App'),
+          centerTitle: true,
+          backgroundColor: Colors.teal[700],
+        ),
+        body: BirdListWithListView(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print('U pressed');
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddNewBird(),
+                )
+            );
+          },
+          backgroundColor: Colors.teal[700],
+          child: Icon(Icons.add),
         ),
       ),
     );

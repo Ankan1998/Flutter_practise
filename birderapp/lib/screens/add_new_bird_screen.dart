@@ -78,35 +78,42 @@ class _AddNewBirdState extends State<AddNewBird> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.all(20.0),
-        child: Form(
-          key: _formkey,
-          child: Column(
-            children: <Widget>[
-              _buildBirdId(),
-              _buildBirdName(),
-              _buildBirdScientificName(),
-              _buildBirdImageUrl(),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formkey.currentState!.validate()) {
-                    return;
-                  }
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Birder App'),
+        centerTitle: true,
+        backgroundColor: Colors.teal[700],
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.all(20.0),
+          child: Form(
+            key: _formkey,
+            child: Column(
+              children: <Widget>[
+                _buildBirdId(),
+                _buildBirdName(),
+                _buildBirdScientificName(),
+                _buildBirdImageUrl(),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      return;
+                    }
 
-                  // save the bird
+                    // save the bird
 
-                  _formkey.currentState!.save();
-                  _newbird = BirdModel(
-                      id: int.parse(_txtId),
-                      name: _txtName,
-                      scientificName: _txtScientificName,
-                      imageUrl: _txtImageUrl);
-                },
-                child: Text('Add new bird'),
-              )
-            ],
+                    _formkey.currentState!.save();
+                    _newbird = BirdModel(
+                        id: int.parse(_txtId),
+                        name: _txtName,
+                        scientificName: _txtScientificName,
+                        imageUrl: _txtImageUrl);
+                  },
+                  child: Text('Add new bird'),
+                )
+              ],
+            ),
           ),
         ),
       ),

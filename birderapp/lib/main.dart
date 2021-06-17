@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    BirderApp()
+    MaterialApp( //Keeping Mterial App in main page and then navigating accordingly
+    home: BirderApp(),
+    )
   );
 }
