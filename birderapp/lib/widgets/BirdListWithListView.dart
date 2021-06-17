@@ -1,4 +1,5 @@
 import 'package:birderapp/models/birdlist_changenotifier.dart';
+import 'package:birderapp/screens/bird_detail_screen.dart';
 import 'package:birderapp/widgets/birdcount.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,10 +26,20 @@ class _BirdListWithListViewState extends State<BirdListWithListView> {
               child: Card(
                 elevation: 10,
                 child: ListTile(
-                  leading: Image(
-                    width: 100.0,
-                    fit: BoxFit.fitWidth,
-                    image: NetworkImage(bird.imageUrl),
+                  leading: GestureDetector(
+                    onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BirdDetails(theBird: bird,),
+                          )
+                      );
+                    },
+                    child: Image(
+                      width: 100.0,
+                      fit: BoxFit.fitWidth,
+                      image: NetworkImage(bird.imageUrl),
+                    ),
                   ),
                   title: Text(
                     bird.name,

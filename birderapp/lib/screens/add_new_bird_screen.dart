@@ -1,5 +1,7 @@
+import 'package:birderapp/models/birdlist_changenotifier.dart';
 import 'package:birderapp/models/birdmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddNewBird extends StatefulWidget {
   @override
@@ -7,8 +9,8 @@ class AddNewBird extends StatefulWidget {
 }
 
 class _AddNewBirdState extends State<AddNewBird> {
-  String _txtName='';
-  String _txtScientificName ='';
+  String _txtName = '';
+  String _txtScientificName = '';
   String _txtImageUrl = '';
   String _txtId = '';
   late BirdModel _newbird;
@@ -109,6 +111,8 @@ class _AddNewBirdState extends State<AddNewBird> {
                         name: _txtName,
                         scientificName: _txtScientificName,
                         imageUrl: _txtImageUrl);
+                    // Access list of birds from ChangeNotifier
+                    Provider.of<BirdListChangeNotifier>(context, listen: false).addNewBirdToList(_newbird);
                   },
                   child: Text('Add new bird'),
                 )

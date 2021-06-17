@@ -9,28 +9,25 @@ import 'BirdListWithListView.dart';
 class BirderApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => BirdListChangeNotifier(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Birder App'),
-          centerTitle: true,
-          backgroundColor: Colors.teal[700],
-        ),
-        body: BirdListWithListView(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            print('U pressed');
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddNewBird(),
-                )
-            );
-          },
-          backgroundColor: Colors.teal[700],
-          child: Icon(Icons.add),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Birder App'),
+        centerTitle: true,
+        backgroundColor: Colors.teal[700],
+      ),
+      body: BirdListWithListView(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('U pressed');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddNewBird(),
+              )
+          );
+        },
+        backgroundColor: Colors.teal[700],
+        child: Icon(Icons.add),
       ),
     );
   }

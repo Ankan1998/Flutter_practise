@@ -33,4 +33,9 @@ class BirdListChangeNotifier extends ChangeNotifier {
     // notifyListeners gives alert to consumer that changes are made
     notifyListeners();
   }
+
+  void addNewBirdToList(BirdModel newBird) {
+    listofbirds.add(newBird);
+    notifyListeners();
+  }
 }
