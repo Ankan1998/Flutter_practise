@@ -35,19 +35,24 @@ class Posts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 300.0,
-      width: 300.0,
-      child: Column(
-        children: [
-          Text(title),
-          ElevatedButton(
-            onPressed: () {
-              _srvObject.fetchPosts();
-            },
-            child: Text('Get Post'),
-          )
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body: Container(
+        height: 300.0,
+        width: 300.0,
+        child: Column(
+          children: [
+            Text(title),
+            ElevatedButton(
+              onPressed: () {
+                _srvObject.fetchPosts();
+              },
+              child: Text('Get Post'),
+            )
+          ],
+        ),
       ),
     );
   }
