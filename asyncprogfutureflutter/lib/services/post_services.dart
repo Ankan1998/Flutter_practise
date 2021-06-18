@@ -1,5 +1,5 @@
+import 'package:asyncprogfutureflutter/models/post_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'dart:convert';
 
 class PostsService {
@@ -11,6 +11,10 @@ class PostsService {
     if (response.statusCode == 200) {
       //print(response.body);
       //print(json.decode(response.body));
+      var data = PostModel.fromJson(
+        jsonDecode(response.body),
+      );
+      print(data.title);
     }
   }
 }
