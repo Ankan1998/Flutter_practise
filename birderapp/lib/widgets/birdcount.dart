@@ -6,7 +6,7 @@ class BirdCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<BirdListChangeNotifier>(
-      builder: (_, birdlistCNInstance, __) => Container(
+      builder: (ctx, birdlistCNInstance, widget) => Container(
         margin: EdgeInsets.all(20.0),
         child: Text(
           'Total Birds : ${birdlistCNInstance.listofbirds.length}',

@@ -35,13 +35,13 @@ class BirderApp extends StatelessWidget {
                 },
                 backgroundColor: Colors.teal[700],
                 child: Icon(Icons.add),
-              )
+            )
             : null,
       ),
     );
   }
 
-    void navigateToAddNewBirdScreen(BuildContext context) {
+  void navigateToAddNewBirdScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(

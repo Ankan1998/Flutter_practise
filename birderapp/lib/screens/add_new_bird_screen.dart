@@ -100,7 +100,7 @@ class _AddNewBirdState extends State<AddNewBird> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Birder App'),
+        title: Text('New Bird'),
         centerTitle: true,
         backgroundColor: Colors.teal[700],
       ),
@@ -118,7 +118,8 @@ class _AddNewBirdState extends State<AddNewBird> {
                 _buildBirdInfo(),
                 ElevatedButton(
                   onPressed: () {
-                    if (_formkey.currentState!.validate()) {
+                    var isvalid = _formkey.currentState?.validate();
+                    if (isvalid == true) {
                       return;
                     }
 
@@ -131,9 +132,11 @@ class _AddNewBirdState extends State<AddNewBird> {
                       scientificName: _txtScientificName,
                       imageUrl: _txtImageUrl,
                       info: _txtInfo,
-                      likes: 0, isFavorite: false,
+                      likes: 0,
+                      isFavorite: false,
                     );
                     // Access list of birds from ChangeNotifier
+                    print(_newbird.name);
                     Provider.of<BirdListChangeNotifier>(
                       context,
                       listen: false,
