@@ -1,3 +1,4 @@
+import 'package:asyncprogfutureflutter/services/post_services.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,12 +30,25 @@ class MyApp extends StatelessWidget {
 
 class Posts extends StatelessWidget {
   final String title;
+  PostsService _srvObject = PostsService();
   Posts({required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(title),
+      height: 300.0,
+      width: 300.0,
+      child: Column(
+        children: [
+          Text(title),
+          ElevatedButton(
+            onPressed: () {
+              _srvObject.fetchPosts();
+            },
+            child: Text('Get Post'),
+          )
+        ],
+      ),
     );
   }
 }
