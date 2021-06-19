@@ -1,5 +1,3 @@
-import 'package:asyncprogfutureflutter/models/post_model.dart';
-import 'package:asyncprogfutureflutter/services/post_services.dart';
 import 'package:asyncprogfutureflutter/widgets/posts_with_future_builder.dart';
 import 'package:flutter/material.dart';
 
