@@ -137,13 +137,13 @@ class _AddNewBirdState extends State<AddNewBird> {
                     );
                     // Access list of birds from ChangeNotifier
                     // print(_newbird.name);
-                    // Provider.of<BirdListChangeNotifier>(
-                    //   context,
-                    //   listen: false,
-                    // ).addNewBirdToList(_newbird);
+                    Provider.of<BirdListChangeNotifier>(
+                      context,
+                      listen: false,
+                    ).addNewBirdToList(_newbird);
                     // Navigator.pop(context);
-                    BirdsService _srvObj = BirdsService();
-                    _srvObj.addABirdtoFirebaseDB(this._newbird);
+                    // BirdsService _srvObj = BirdsService();
+                    // _srvObj.addABirdtoFirebaseDB(this._newbird);
                   },
                   child: Text('Add new bird'),
                 )

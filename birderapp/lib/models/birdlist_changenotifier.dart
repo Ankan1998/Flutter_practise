@@ -1,4 +1,5 @@
 import 'package:birderapp/models/birdmodel.dart';
+import 'package:birderapp/services/birds_services.dart';
 import 'package:flutter/cupertino.dart';
 
 class BirdListChangeNotifier extends ChangeNotifier {
@@ -36,6 +37,7 @@ class BirdListChangeNotifier extends ChangeNotifier {
   // ];
 
   final List<BirdModel> listofbirds = [];
+  final BirdsService _srvObject = BirdsService();
 
   void deleteABird(BirdModel bird) {
     listofbirds.removeWhere((theBird) => bird.id == theBird.id);
@@ -43,9 +45,14 @@ class BirdListChangeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addNewBirdToList(BirdModel newBird) {
-    listofbirds.add(newBird);
-    notifyListeners();
+  void addNewBirdToList(BirdModel newBird) async {
+    //listofbirds.add(newBird);
+    var futureOfPostStatus = await _srvObject.addABirdtoFirebaseDB(newBird);
+    if(futureOfPostStatus == "success") {
+      listofbirds.add(newBird);
+      notifyListeners();
+    }
+    
   }
 
   void incrementLikes(BirdModel bird) {
