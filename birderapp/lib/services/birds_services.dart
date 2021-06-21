@@ -11,7 +11,7 @@ class BirdsService {
     try {
       // do not hard code urls is bad practise ! Instead accept them as parameters
       const _domainString =
-          "sapientbirderappjune-default-rtdb.asia-southeast1.firebasedatabase.app";
+          "ankansapientbirderapp-default-rtdb.asia-southeast1.firebasedatabase.app";
       const _urlString = "birds.json";
       Uri url = Uri.https(_domainString, _urlString);
       var response = await http.post(
