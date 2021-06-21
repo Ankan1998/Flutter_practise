@@ -1,5 +1,6 @@
 import 'package:birderapp/models/birdlist_changenotifier.dart';
 import 'package:birderapp/models/birdmodel.dart';
+import 'package:birderapp/services/birds_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -118,8 +119,7 @@ class _AddNewBirdState extends State<AddNewBird> {
                 _buildBirdInfo(),
                 ElevatedButton(
                   onPressed: () {
-                    var isvalid = _formkey.currentState?.validate();
-                    if (isvalid == true) {
+                    if (!_formkey.currentState!.validate()) {
                       return;
                     }
 
@@ -136,12 +136,14 @@ class _AddNewBirdState extends State<AddNewBird> {
                       isFavorite: false,
                     );
                     // Access list of birds from ChangeNotifier
-                    print(_newbird.name);
-                    Provider.of<BirdListChangeNotifier>(
-                      context,
-                      listen: false,
-                    ).addNewBirdToList(_newbird);
-                    Navigator.pop(context);
+                    // print(_newbird.name);
+                    // Provider.of<BirdListChangeNotifier>(
+                    //   context,
+                    //   listen: false,
+                    // ).addNewBirdToList(_newbird);
+                    // Navigator.pop(context);
+                    BirdsService _srvObj = BirdsService();
+                    _srvObj.addABirdtoFirebaseDB(this._newbird);
                   },
                   child: Text('Add new bird'),
                 )

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 //https://pub.dev/
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     ChangeNotifierProvider(
       create: (_) => BirdListChangeNotifier(),
