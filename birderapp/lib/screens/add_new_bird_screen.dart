@@ -15,7 +15,7 @@ class _AddNewBirdState extends State<AddNewBird> {
   String _txtImageUrl = '';
   String _txtId = '';
   String _txtInfo = '';
-  late BirdModel _newbird;
+  BirdModel _newbird;
 
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
@@ -23,14 +23,14 @@ class _AddNewBirdState extends State<AddNewBird> {
     return TextFormField(
       keyboardType: TextInputType.number,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value.isEmpty) {
           return "Id Required !";
         }
         return null;
       },
       decoration: InputDecoration(labelText: 'Id:'),
       onSaved: (value) {
-        _txtId = value!;
+        _txtId = value;
       },
     );
   }
@@ -39,13 +39,13 @@ class _AddNewBirdState extends State<AddNewBird> {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Name:'),
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value.isEmpty) {
           return "Name Required !";
         }
         return null;
       },
       onSaved: (value) {
-        _txtName = value!;
+        _txtName = value;
       },
     );
   }
@@ -54,13 +54,13 @@ class _AddNewBirdState extends State<AddNewBird> {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Scientific Name:'),
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value.isEmpty) {
           return "Scientific Name Required !";
         }
         return null;
       },
       onSaved: (value) {
-        _txtScientificName = value!;
+        _txtScientificName = value;
       },
     );
   }
@@ -71,13 +71,13 @@ class _AddNewBirdState extends State<AddNewBird> {
       keyboardType: TextInputType.multiline,
       maxLines: null,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value.isEmpty) {
           return "Info Required !";
         }
         return null;
       },
       onSaved: (value) {
-        _txtInfo = value!;
+        _txtInfo = value;
       },
     );
   }
@@ -86,13 +86,13 @@ class _AddNewBirdState extends State<AddNewBird> {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Image Url:'),
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value.isEmpty) {
           return "Image Url Required !";
         }
         return null;
       },
       onSaved: (value) {
-        _txtImageUrl = value!;
+        _txtImageUrl = value;
       },
     );
   }
@@ -119,13 +119,13 @@ class _AddNewBirdState extends State<AddNewBird> {
                 _buildBirdInfo(),
                 ElevatedButton(
                   onPressed: () {
-                    if (!_formkey.currentState!.validate()) {
+                    if (!_formkey.currentState.validate()) {
                       return;
                     }
 
                     // save the bird
 
-                    _formkey.currentState!.save();
+                    _formkey.currentState.save();
                     _newbird = BirdModel(
                       id: int.parse(_txtId),
                       name: _txtName,
@@ -141,6 +141,7 @@ class _AddNewBirdState extends State<AddNewBird> {
                       context,
                       listen: false,
                     ).addNewBirdToList(_newbird);
+                    Navigator.of(context).pop("success");
                     // Navigator.pop(context);
                     // BirdsService _srvObj = BirdsService();
                     // _srvObj.addABirdtoFirebaseDB(this._newbird);
