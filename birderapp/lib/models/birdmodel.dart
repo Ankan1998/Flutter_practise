@@ -5,16 +5,29 @@ class BirdModel {
   final String scientificName;
   final String info;
   final String imageUrl;
-  bool isFavorite = false;
+  bool isFavorite;
 
   BirdModel(
-      {required this.id,
-      required this.likes,
-      required this.info,
-      required this.name,
-      required this.isFavorite,
-      required this.scientificName,
-      required this.imageUrl});
+      {this.isFavorite = false,
+      this.id,
+      this.likes,
+      this.info,
+      this.name,
+      
+      this.scientificName,
+      this.imageUrl});
+
+   factory BirdModel.fromJSON(Map<String, dynamic> jsonData) {
+    return BirdModel(
+      id: jsonData["id"],
+      name: jsonData["name"],
+      scientificName: jsonData["scientificName"],
+      imageUrl: jsonData["imageUrl"],
+      info: jsonData["info"],
+      likes: jsonData["likes"],
+      //isFavorite: jsonData['isFavorite']
+    );
+  }
 }
 
 // Demo Stateful widget
