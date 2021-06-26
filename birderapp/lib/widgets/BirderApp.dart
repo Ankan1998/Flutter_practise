@@ -41,13 +41,23 @@ class BirderApp extends StatelessWidget {
     );
   }
 
-  void navigateToAddNewBirdScreen(BuildContext context) {
-    Navigator.push(
+  void navigateToAddNewBirdScreen(BuildContext context) async {
+    var result = await Navigator.push<String>(
       context,
       MaterialPageRoute(
         builder: (context) => AddNewBird(),
       ),
     );
+
+    if (result == "success") {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Bird added successfully !'),
+        ),
+      );
+    }
+
+
   }
 
 
