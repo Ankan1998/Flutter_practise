@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class BirdDetails extends StatefulWidget {
   //const BirdDetails({ Key? key }) : super(key: key);
   final BirdModel theBird;
-  BirdDetails({required this.theBird});
+  BirdDetails({this.theBird});
 
   @override
   _BirdDetailsState createState() => _BirdDetailsState();
