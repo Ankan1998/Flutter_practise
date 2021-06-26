@@ -36,7 +36,7 @@ class BirdListChangeNotifier extends ChangeNotifier {
   //           'Kingfishers or Alcedinidae are a family of small to medium-sized, brightly colored birds in the order Coraciiformes. They have a cosmopolitan distribution, with most species found in the tropical regions of Africa, Asia, and Oceania. The family contains 114 species and is divided into three subfamilies and 19 genera.'),
   // ];
 
-  final List<BirdModel> listofbirds = [];
+  List<BirdModel> listofbirds = [];
   final BirdsService _srvObject = BirdsService();
 
   void deleteABird(BirdModel bird) {
@@ -48,11 +48,17 @@ class BirdListChangeNotifier extends ChangeNotifier {
   void addNewBirdToList(BirdModel newBird) async {
     //listofbirds.add(newBird);
     var futureOfPostStatus = await _srvObject.addABirdtoFirebaseDB(newBird);
-    if(futureOfPostStatus == "success") {
+    if (futureOfPostStatus == "success") {
       listofbirds.add(newBird);
       notifyListeners();
     }
-    
+  }
+
+  void getAllBirds() async {
+    var futureofgetbirdlist = await _srvObject.getAllBirdsFromFirebaseDB();
+    listofbirds = futureofgetbirdlist;
+    // get data from Service and assign to list of birds
+    notifyListeners();
   }
 
   void incrementLikes(BirdModel bird) {
