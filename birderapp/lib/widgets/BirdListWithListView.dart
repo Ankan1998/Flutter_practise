@@ -1,5 +1,6 @@
 import 'package:birderapp/models/birdlist_changenotifier.dart';
 import 'package:birderapp/screens/bird_detail_screen.dart';
+import 'package:birderapp/services/birds_services.dart';
 import 'package:birderapp/widgets/birdcount.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,15 @@ class BirdListWithListView extends StatefulWidget {
 }
 
 class _BirdListWithListViewState extends State<BirdListWithListView> {
+  final BirdsService _srvObject = BirdsService();
+  
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<BirdListChangeNotifier>(context, listen: false).getAllBirds();
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Consumer<BirdListChangeNotifier>(
